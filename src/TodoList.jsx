@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { observer } from 'mobx-react-lite';
-import todoStore from './TodoStore';
+import todoStore from './TodoStoreFn';
 import './TodoList.css';
 
 const TodoList = () => {
@@ -48,25 +48,32 @@ const TodoList = () => {
             onChange={(e) => setNewTodoText(e.target.value)}
         />
         <button className="todo-button" onClick={handleAddTodo}>Add Todo</button>
-        
       </div>
       <ul className="todo-list">
         {todoStore.todos.map((todo) => (
           <li key={todo.id} className="todo-item">
-            <span className="todo-text">{todo.text}</span>
-            <div className="todo-buttons">
-              {editingTodoId === todo.id ? (
-                <>
+            {editingTodoId === todo.id ? (
+              <>
+                <input
+                  className="edit-todo-input"
+                  type="text"
+                  value={editedTodoText}
+                  onChange={(e) => setEditedTodoText(e.target.value)}
+                />
+                <div className="todo-buttons">
                   <button className="todo-button edit-button" onClick={() => handleSaveEditedTodo(todo.id)}>Save</button>
                   <button className="todo-button cancel-button" onClick={handleCancelEditTodo}>Cancel</button>
-                </>
-              ) : (
-                <>
+                </div>
+              </>
+            ) : (
+              <>
+                <span className="todo-text">{todo.text}</span>
+                <div className="todo-buttons">
                   <button className="todo-button edit-button" onClick={() => handleStartEditTodo(todo.id, todo.text)}>Edit</button>
-                </>
-              )}
-              <button className="todo-button delete-button" onClick={() => handleDeleteTodo(todo.id)}>Delete</button>
-            </div>
+                </div>
+              </>
+            )}
+            <button className="todo-button delete-button" onClick={() => handleDeleteTodo(todo.id)}>Delete</button>
           </li>
         ))}
       </ul>
