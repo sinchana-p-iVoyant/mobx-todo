@@ -1,5 +1,3 @@
-/* TodoList.css */
-
 .todo-list-container {
     width: 600px;
     margin: 0 auto;
@@ -11,20 +9,20 @@
     padding: 0;
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* Align items to the start of the column */
+    align-items: flex-start; 
   }
   
   .todo-item {
     display: flex;
-    align-items: center; /* Align items horizontally within the todo item */
+    align-items: center; 
   }
   
   .todo-text {
-    flex-grow: 1; /* Allow text to grow to fill the space */
+    flex-grow: 1; 
   }
   
   .todo-buttons {
-    margin-left: 10px; /* Add space between text and buttons */
+    margin-left: 10px; 
     display: flex;
     flex-direction: row;
 
@@ -72,7 +70,7 @@
   .todo-item {
     margin-bottom: 10px;
     display: flex;
-    align-items: center; /* Align items horizontally within the todo item */
+    align-items: center; 
   }
 
   .todo-item input[type="text"] {
@@ -110,3 +108,6 @@
     background-color: #da190b;
   }
   
+  .completed .todo-text {
+    text-decoration: line-through;
+  }
