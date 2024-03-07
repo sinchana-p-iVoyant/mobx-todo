@@ -51,6 +51,7 @@ const createTodoStore = (): TodoStore => {
 
   };
 
+  // -------------
   const fetchTodos = async (): Promise<void> => {
     try {
       // Run the Mockoon for this endpoint.
@@ -66,6 +67,8 @@ const createTodoStore = (): TodoStore => {
 
   // Fetch todos initially when the store is created
   fetchTodos();
+
+  // -----------
 
   makeObservable(todoStore, {
     todos: observable,
